@@ -1,0 +1,202 @@
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffffff;
+    /* White background as per image, or essentially very clean */
+    position: relative;
+}
+
+.auth-card {
+    background: white;
+    padding: 3rem 2.5rem;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -1.5px rgba(0, 0, 0, 0.05);
+    /* Soft shadow */
+    width: 100%;
+    max-width: 450px;
+    border: 1px solid #f0f0f0;
+    text-align: center;
+}
+
+.auth-header {
+    margin-bottom: 2.5rem;
+}
+
+.monkey-logo {
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.auth-header h1 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    /* Dark blue-ish gray */
+    font-weight: 500;
+    margin: 0;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.75rem;
+    color: #64748b;
+    /* Muted text */
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 12px;
+    color: #64748b;
+    z-index: 10;
+}
+
+.input-with-icon input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.75rem;
+    /* Space for icon */
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-with-icon input:focus {
+    border-color: #3b82f6;
+    /* Focus color */
+}
+
+.login-btn {
+    background-color: #19877b;
+    /* Teal color from image */
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+    margin-top: 1rem;
+}
+
+.login-btn:hover {
+    background-color: #146c62;
+}
+
+.auth-footer {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+.footer-link {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.footer-link:hover {
+    color: #1a1a1a;
+}
+
+/* Floating WhatsApp Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 100;
+}
+
+/* Existing styles... */
+
+.register-card {
+    max-width: 550px;
+    /* Wider for split row */
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.auth-select {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.75rem;
+    /* Space for icon */
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+    background: white;
+    appearance: none;
+    /* Hide default arrow to be consistent? Or keep it simple */
+    color: #1a1a1a;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    /* Reset global width 100% if applied */
+    accent-color: #19877b;
+}
+
+.checkbox-label {
+    font-size: 0.85rem !important;
+    text-transform: none !important;
+    margin-bottom: 0 !important;
+    font-weight: 400 !important;
+}
+
+.checkbox-label a {
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+.whatsapp-icon-img {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.whatsapp-icon-img:hover {
+    transform: scale(1.1);
+}
