@@ -1,6 +1,11 @@
-import { Bell, Menu, User } from 'lucide-react';
+"use client";
+import { Bell, Menu, User, CreditCard, History, Star, Key, LogOut } from 'lucide-react';
+import { useState } from 'react';
+import Link from 'next/link';
 
 export default function Navbar({ toggleSidebar }) {
+    const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+
     return (
         <nav className="navbar">
             <div className="navbar-left">
@@ -40,8 +45,38 @@ export default function Navbar({ toggleSidebar }) {
                     <Bell size={20} color="#fbbf24" /> {/* Amber color for bell */}
                     <span className="notification-dot">3</span>
                 </button>
-                <div className="user-avatar">
-                    <User size={20} color="#19877b" />
+
+                <div className="user-menu-container">
+                    <div
+                        className="user-avatar"
+                        onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                    >
+                        <User size={20} color="#19877b" />
+                    </div>
+
+                    {isUserMenuOpen && (
+                        <div className="user-menu-dropdown">
+                            <Link href="/dashboard/settings" className="menu-item">
+                                <User size={18} /> Account
+                            </Link>
+                            <Link href="#" className="menu-item">
+                                <CreditCard size={18} /> Renew / Upgrade
+                            </Link>
+                            <Link href="/dashboard/transactions" className="menu-item">
+                                <History size={18} /> Transactions
+                            </Link>
+                            <Link href="/dashboard/feedback" className="menu-item">
+                                <Star size={18} /> Rate Us
+                            </Link>
+                            <Link href="/dashboard/developer" className="menu-item">
+                                <Key size={18} /> API Developer
+                            </Link>
+                            <div className="menu-divider"></div>
+                            <Link href="/login" className="menu-item logout">
+                                <LogOut size={18} /> Logout
+                            </Link>
+                        </div>
+                    )}
                 </div>
             </div>
         </nav>
