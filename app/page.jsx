@@ -1,10 +1,5 @@
-import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
-export default function LandingPage() {
-    return (
-        <main style={{ padding: '2rem', textAlign: 'center' }}>
-            <h1>Welcome to WhatChat</h1>
-            <Link href="/login">Go to Login</Link>
-        </main>
-    );
+export default function Home() {
+    redirect('/login');
 }
