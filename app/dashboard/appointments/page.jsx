@@ -1,49 +1,204 @@
 "use client";
-import { Plus, Calendar as CalendarIcon, Clock, User } from 'lucide-react';
-
-const APPOINTMENTS = [
-    { id: 1, client: "John Doe", time: "10:00 AM - 10:30 AM", date: "Today", status: "Confirmed", type: "Demo Call" },
-    { id: 2, client: "Sarah Connor", time: "2:00 PM - 2:45 PM", date: "Tomorrow", status: "Pending", type: "Consultation" },
-];
+import React from 'react';
+import { Video, ChevronDown, Search, Plus } from 'lucide-react';
 
 export default function AppointmentPage() {
     return (
-        <div className="dashboard-page">
-            <div className="page-header-row">
-                <div className="page-title" style={{ marginBottom: 0 }}>Appointments</div>
-                <button className="primary-btn"><Plus size={18} style={{ marginRight: '0.5rem' }} /> New Booking</button>
+        <div className="dashboard-page" style={{ paddingBottom: '3rem' }}>
+            {/* Page Header */}
+            <div style={{ marginBottom: '2rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.5rem' }}>
+                    <h1 className="page-title" style={{ margin: 0, fontSize: '1.5rem', fontWeight: 'bold', color: '#111827' }}>WhatsApp Appointment System</h1>
+                    <Video size={24} color="#f97316" />
+                    <button style={{
+                        backgroundColor: '#e5e7eb',
+                        color: '#111827',
+                        border: 'none',
+                        padding: '0.4rem 1rem',
+                        borderRadius: '20px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.25rem',
+                        fontSize: '0.85rem',
+                        fontWeight: '600',
+                        cursor: 'pointer'
+                    }}>
+                        <div style={{ background: '#000', borderRadius: '50%', width: '14px', height: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Plus size={10} color="white" />
+                        </div>
+                        New Appointment
+                    </button>
+                </div>
+                <p style={{ margin: 0, color: '#9ca3af', fontSize: '0.9rem' }}>Manage your WhatsApp appointments</p>
             </div>
 
-            <div className="card-container">
-                <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', overflowX: 'auto', paddingBottom: '0.5rem' }}>
-                    {[...Array(7)].map((_, i) => (
-                        <div key={i} style={{ minWidth: '80px', height: '90px', border: i === 0 ? '2px solid #19877b' : '1px solid #e5e7eb', borderRadius: '8px', padding: '0.75rem', textAlign: 'center', cursor: 'pointer', background: i === 0 ? '#f0fdf9' : 'white' }}>
-                            <div style={{ fontSize: '0.85rem', color: i === 0 ? '#19877b' : '#6b7280', marginBottom: '0.5rem' }}>{['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'][i]}</div>
-                            <div style={{ fontSize: '1.25rem', fontWeight: 700, color: i === 0 ? '#19877b' : '#1f2937' }}>{12 + i}</div>
+            {/* SECTION 1: Appointment Manager */}
+            <div className="card-container" style={{ padding: '1.5rem', backgroundColor: 'white', borderRadius: '8px', border: '1px solid #e5e7eb', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', marginBottom: '2rem' }}>
+                <h3 style={{ margin: 0, fontSize: '1.2rem', fontWeight: 'bold', color: '#111827' }}>Appointment Manager</h3>
+                <p style={{ margin: '0 0 1.5rem 0', color: '#9ca3af', fontSize: '0.9rem' }}>Manage your appointment campaigns</p>
+
+                {/* Filters Row */}
+                <div style={{ display: 'flex', gap: '1.5rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+                    <div style={{ flex: 1, minWidth: '150px', position: 'relative' }}>
+                        <div style={{ padding: '0.6rem 1rem', border: '1px solid #e5e7eb', borderRadius: '4px', color: '#9ca3af', fontSize: '0.9rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <span>Any WhatsApp Account</span>
+                            <ChevronDown size={14} />
                         </div>
-                    ))}
+                    </div>
+                    <div style={{ flex: 1, minWidth: '150px', position: 'relative' }}>
+                        <div style={{ padding: '0.6rem 1rem', border: '1px solid #e5e7eb', borderRadius: '4px', color: '#9ca3af', fontSize: '0.9rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <span>Any Status</span>
+                            <ChevronDown size={14} />
+                        </div>
+                    </div>
+                    <div style={{ flex: 1.5, minWidth: '200px', position: 'relative' }}>
+                        <input
+                            type="text"
+                            placeholder="Search & Enter..."
+                            style={{
+                                width: '100%',
+                                padding: '0.6rem 1rem',
+                                border: '1px solid #10b981',
+                                borderRadius: '4px',
+                                fontSize: '0.9rem',
+                                outline: 'none',
+                                color: '#374151'
+                            }}
+                        />
+                    </div>
                 </div>
 
-                <div className="campaign-list" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                    {APPOINTMENTS.map((apt) => (
-                        <div key={apt.id} className="campaign-item" style={{ display: 'flex', alignItems: 'center', padding: '1rem', border: '1px solid #f3f4f6', borderRadius: '8px', gap: '1rem' }}>
-                            <div style={{ textAlign: 'center', minWidth: '60px' }}>
-                                <div style={{ fontSize: '0.9rem', fontWeight: 600 }}>{apt.time.split('-')[0]}</div>
-                                <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>30 min</div>
-                            </div>
-                            <div style={{ width: '4px', height: '40px', background: apt.status === 'Confirmed' ? '#3b82f6' : '#f59e0b', borderRadius: '2px' }}></div>
-                            <div style={{ flex: 1 }}>
-                                <h4 style={{ margin: '0 0 0.25rem 0' }}>{apt.type} with {apt.client}</h4>
-                                <div style={{ fontSize: '0.85rem', color: '#6b7280', display: 'flex', gap: '1rem' }}>
-                                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}><User size={12} /> {apt.client}</span>
-                                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}><CalendarIcon size={12} /> {apt.date}</span>
-                                </div>
-                            </div>
-                            <div>
-                                <span className={`status-badge`} style={{ background: apt.status === 'Confirmed' ? '#dbeafe' : '#fef3c7', color: apt.status === 'Confirmed' ? '#1e40af' : '#92400e' }}>{apt.status}</span>
+                {/* Table */}
+                <div style={{ overflowX: 'auto' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '800px' }}>
+                        <thead>
+                            <tr style={{ backgroundColor: '#f0f9ff' }}>
+                                <th style={{ padding: '0.75rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: '700' }}>Image</th>
+                                <th style={{ padding: '0.75rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: '700' }}>Name</th>
+                                <th style={{ padding: '0.75rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: '700' }}>Public</th>
+                                <th style={{ padding: '0.75rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: '700' }}>Actions</th>
+                                <th style={{ padding: '0.75rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: '700' }}>Message Templates</th>
+                                <th style={{ padding: '0.75rem', textAlign: 'right', fontSize: '0.8rem', fontWeight: '700' }}>Updated at</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colSpan={6} style={{ padding: '2rem', textAlign: 'center', color: '#6b7280', fontSize: '0.9rem' }}>
+                                    No data available in table
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginTop: '1rem', gap: '1rem' }}>
+                    <span style={{ fontSize: '0.85rem', color: '#6b7280' }}>0 - 0 of 0</span>
+                    <div style={{ display: 'flex', gap: '0.25rem' }}>
+                        <button style={{ padding: '0.4rem 0.8rem', border: '1px solid #e5e7eb', background: 'white', borderRadius: '4px', color: '#9ca3af', fontSize: '0.85rem' }}>Previous</button>
+                        <button style={{ padding: '0.4rem 0.8rem', border: '1px solid #e5e7eb', background: 'white', borderRadius: '4px', color: '#9ca3af', fontSize: '0.85rem' }}>Next</button>
+                    </div>
+                </div>
+                <div style={{ marginTop: '1rem' }}>
+                    <select style={{ padding: '0.3rem 0.5rem', border: '1px solid #e5e7eb', borderRadius: '4px', color: '#6b7280', fontSize: '0.85rem' }}>
+                        <option>10</option>
+                    </select>
+                </div>
+            </div>
+
+
+            {/* SECTION 2: Appointment Requests */}
+            <div className="card-container" style={{ padding: '1.5rem', backgroundColor: 'white', borderRadius: '8px', border: '1px solid #e5e7eb', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', marginBottom: '2rem' }}>
+                <h3 style={{ margin: 0, fontSize: '1.2rem', fontWeight: 'bold', color: '#111827' }}>Appointment Requests</h3>
+                <p style={{ margin: '0 0 1.5rem 0', color: '#9ca3af', fontSize: '0.9rem' }}>Manage your appointment requests</p>
+
+                {/* Filters */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+                    <div style={{ display: 'flex', gap: '1.5rem', flex: 1 }}>
+                        <div style={{ flex: 1, position: 'relative' }}>
+                            <div style={{ padding: '0.6rem 1rem', border: '1px solid #e5e7eb', borderRadius: '4px', color: '#6b7280', fontSize: '0.9rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <span>Any Appointment</span>
+                                <ChevronDown size={14} />
                             </div>
                         </div>
-                    ))}
+                        <div style={{ flex: 1, position: 'relative' }}>
+                            <div style={{ padding: '0.6rem 1rem', border: '1px solid #e5e7eb', borderRadius: '4px', color: '#6b7280', fontSize: '0.9rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <span>Any Status</span>
+                                <ChevronDown size={14} />
+                            </div>
+                        </div>
+                        <div style={{ flex: 1.5, position: 'relative' }}>
+                            <input
+                                type="text"
+                                placeholder="Search & Enter..."
+                                style={{
+                                    width: '100%',
+                                    padding: '0.6rem 1rem',
+                                    border: '1px solid #e5e7eb', // Plain border for this input in mock
+                                    borderRadius: '4px',
+                                    fontSize: '0.9rem',
+                                    outline: 'none',
+                                    color: '#374151'
+                                }}
+                            />
+                        </div>
+                    </div>
+                    <button style={{
+                        padding: '0.6rem 1rem',
+                        border: '1px solid #e5e7eb',
+                        backgroundColor: 'white',
+                        borderRadius: '4px',
+                        color: '#374151',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        fontSize: '0.9rem',
+                        fontWeight: '500',
+                        cursor: 'pointer'
+                    }}>
+                        Options <ChevronDown size={14} />
+                    </button>
+                </div>
+
+                <div style={{ overflowX: 'auto' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '1500px' }}>
+                        <thead>
+                            <tr style={{ backgroundColor: '#f0f9ff' }}>
+                                <th style={{ padding: '0.75rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: '700' }}>#</th>
+                                <th style={{ padding: '0.75rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: '700' }}>Booking ID</th>
+                                <th style={{ padding: '0.75rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: '700' }}>Booking Unique ID</th>
+                                <th style={{ padding: '0.75rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: '700' }}>Appointment</th>
+                                <th style={{ padding: '0.75rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: '700' }}>Phone Number</th>
+                                <th style={{ padding: '0.75rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: '700' }}>Buyer</th>
+                                <th style={{ padding: '0.75rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: '700' }}>Amount</th>
+                                <th style={{ padding: '0.75rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: '700' }}>Currency</th>
+                                <th style={{ padding: '0.75rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: '700' }}>Status</th>
+                                <th style={{ padding: '0.75rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: '700' }}>Actions</th>
+                                <th style={{ padding: '0.75rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: '700' }}>Schedule Time</th>
+                                <th style={{ padding: '0.75rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: '700' }}>Booked at</th>
+                                <th style={{ padding: '0.75rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: '700' }}>Updated at</th>
+                                <th style={{ padding: '0.75rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: '700' }}>Payment Method</th>
+                                <th style={{ padding: '0.75rem', textAlign: 'left', fontSize: '0.8rem', fontWeight: '700' }}>Remind at</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colSpan={15} style={{ padding: '3rem', textAlign: 'center', color: '#6b7280', fontSize: '0.9rem' }}>
+                                    No data available in table
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginTop: '1rem', gap: '1rem' }}>
+                    <span style={{ fontSize: '0.85rem', color: '#6b7280' }}>0 - 0 of 0</span>
+                    <div style={{ display: 'flex', gap: '0.25rem' }}>
+                        <button style={{ padding: '0.4rem 0.8rem', border: '1px solid #e5e7eb', background: 'white', borderRadius: '4px', color: '#9ca3af', fontSize: '0.85rem' }}>Previous</button>
+                        <button style={{ padding: '0.4rem 0.8rem', border: '1px solid #e5e7eb', background: 'white', borderRadius: '4px', color: '#9ca3af', fontSize: '0.85rem' }}>Next</button>
+                    </div>
+                </div>
+                <div style={{ marginTop: '1rem' }}>
+                    <select style={{ padding: '0.3rem 0.5rem', border: '1px solid #e5e7eb', borderRadius: '4px', color: '#6b7280', fontSize: '0.85rem' }}>
+                        <option>10</option>
+                    </select>
                 </div>
             </div>
         </div>

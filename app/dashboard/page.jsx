@@ -1,4 +1,9 @@
 import { RotateCw, Bot, AppWindow, Droplets, Layers } from 'lucide-react';
+import SubscriberGrowthChart from '../../components/dashboard/home/SubscriberGrowthChart';
+import SubscriberWeeklyComparison from '../../components/dashboard/home/SubscriberWeeklyComparison';
+import SubscriberSummary from '../../components/dashboard/home/SubscriberSummary';
+import BroadcastSummary from '../../components/dashboard/home/BroadcastSummary';
+import UpcomingBroadcast from '../../components/dashboard/home/UpcomingBroadcast';
 
 export default function DashboardHome() {
     return (
@@ -55,23 +60,25 @@ export default function DashboardHome() {
                 </div>
             </div>
 
-            <div className="charts-row">
-                <div className="chart-card">
-                    <div className="card-header">
-                        Subscriber Growth <span style={{ fontSize: '0.9rem', color: '#9ca3af' }}>(last 30 days)</span>
-                    </div>
-                    <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#9ca3af', border: '1px dashed #e5e7eb', borderRadius: '4px' }}>
-                        Chart Placeholder
-                    </div>
+            <div className="charts-row" style={{ marginBottom: '1.5rem' }}>
+                <div className="chart-card" style={{ flex: 2 }}>
+                    <SubscriberGrowthChart />
                 </div>
 
-                <div className="chart-card">
-                    <div className="card-header">
-                        Subscriber Weekly Comparison
-                    </div>
-                    <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#9ca3af', border: '1px dashed #e5e7eb', borderRadius: '4px' }}>
-                        Chart Placeholder
-                    </div>
+                <div className="chart-card" style={{ flex: 1 }}>
+                    <SubscriberWeeklyComparison />
+                </div>
+            </div>
+
+            <div className="charts-row">
+                <div className="chart-card" style={{ flex: 1.2 }}>
+                    <SubscriberSummary />
+                </div>
+                <div className="chart-card" style={{ flex: 1 }}>
+                    <BroadcastSummary />
+                </div>
+                <div className="chart-card" style={{ flex: 1 }}>
+                    <UpcomingBroadcast />
                 </div>
             </div>
         </div>

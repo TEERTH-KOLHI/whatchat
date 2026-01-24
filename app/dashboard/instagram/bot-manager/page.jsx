@@ -1,17 +1,19 @@
+"use client";
+import React from 'react';
 import { Plus } from 'lucide-react';
-import BotStats from './BotStats';
-import BotTable from './BotTable';
+import BotStats from '../../bot-manager/BotStats';
+import BotTable from '../../bot-manager/BotTable';
 
-export default function BotManagerPage() {
+export default function InstagramBotManagerPage() {
     return (
         <div className="dashboard-page">
             <div className="page-header-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
                 <div>
-                    <div className="page-title" style={{ marginBottom: '0.25rem' }}>Bot Manager</div>
-                    <p style={{ margin: 0, color: '#6b7280', fontSize: '0.95rem' }}>Manage your chat flows and AI agents</p>
+                    <div className="page-title" style={{ marginBottom: '0.25rem' }}>Instagram Bot Manager</div>
+                    <p style={{ margin: 0, color: '#6b7280', fontSize: '0.95rem' }}>Manage your Instagram DM automation flows</p>
                 </div>
                 <button className="primary-btn" style={{
-                    backgroundColor: '#19877b',
+                    backgroundColor: '#c32aa3', // Instagram Pink
                     color: 'white',
                     border: 'none',
                     padding: '0.6rem 1.2rem',
@@ -24,6 +26,10 @@ export default function BotManagerPage() {
                 }}>
                     <Plus size={18} /> Create New Flow
                 </button>
+            </div>
+
+            <div style={{ padding: '1.5rem', background: '#fdf2f8', borderRadius: '8px', marginBottom: '2rem', border: '1px solid #fbcfe8', color: '#be185d' }}>
+                Showing Instagram specific bot statistics and flows.
             </div>
 
             <BotStats />

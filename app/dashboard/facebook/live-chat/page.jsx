@@ -1,27 +1,24 @@
 "use client";
 import React, { useState } from 'react';
 import {
-    Search, Filter, Paperclip, Send, Smile, MoreVertical, Phone, Video, Tag,
-    MessageCircle, Facebook, Instagram, Check, MoreHorizontal, User, Calendar, Mail
+    Search, Filter, Paperclip, Send, Smile, MoreVertical, Phone, Video,
+    Facebook, Check, MoreHorizontal, User, Mail
 } from 'lucide-react';
 
 const CONVERSATIONS = [
-    { id: 1, name: "Alice Freeman", msg: "Hey! Can I get a refund?", time: "2m", unread: 2, channel: "whatsapp", avatar: "AF", type: "text" },
     { id: 2, name: "Bob Smith", msg: "Is this item available in red?", time: "15m", unread: 0, channel: "facebook", avatar: "BS", type: "text" },
-    { id: 3, name: "Charlie Kim", msg: "Thanks for the help!", time: "1h", unread: 0, channel: "instagram", avatar: "CK", type: "text" },
-    { id: 4, name: "David Lee", msg: "Where is my order #1234?", time: "3h", unread: 1, channel: "whatsapp", avatar: "DL", type: "text" },
-    { id: 5, name: "Eva Green", msg: "Love the new features!", time: "1d", unread: 0, channel: "instagram", avatar: "EG", type: "text" },
+    { id: 5, name: "Eva Green", msg: "When is the next sale?", time: "1d", unread: 0, channel: "facebook", avatar: "EG", type: "text" },
+    { id: 6, name: "John Doe", msg: "I love your page!", time: "2d", unread: 1, channel: "facebook", avatar: "JD", type: "text" },
 ];
 
 const MESSAGES = [
-    { id: 1, sender: "user", text: "Hi, I have a problem with my order.", time: "10:30 AM" },
-    { id: 2, sender: "agent", text: "Hello! I'd be happy to help. What is your order number?", time: "10:32 AM" },
-    { id: 3, sender: "user", text: "It's #998877.", time: "10:33 AM" },
-    { id: 4, sender: "agent", text: "Checking that for you right now...", time: "10:33 AM" },
-    { id: 5, sender: "user", text: "Can I get a refund if it hasn't shipped?", time: "10:35 AM" },
+    { id: 1, sender: "user", text: "Hi, is this item available in red?", time: "10:30 AM" },
+    { id: 2, sender: "agent", text: "Hello! Let me check that for you.", time: "10:32 AM" },
+    { id: 3, sender: "agent", text: "Yes, we have 2 units left in red.", time: "10:34 AM" },
+    { id: 4, sender: "user", text: "Great! How can I order?", time: "10:35 AM" },
 ];
 
-export default function InboxPage() {
+export default function FacebookLiveChatPage() {
     const [activeChat, setActiveChat] = useState(CONVERSATIONS[0]);
     const [inputText, setInputText] = useState("");
 
@@ -31,15 +28,18 @@ export default function InboxPage() {
             {/* LEFT COLUMN: Conversation List */}
             <div style={{ width: '350px', borderRight: '1px solid #e5e7eb', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ padding: '1rem', borderBottom: '1px solid #f3f4f6' }}>
-                    <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1rem' }}>Inbox</h2>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
+                        <Facebook size={24} color="#1877f2" fill="#1877f2" />
+                        <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>Live Chat</h2>
+                    </div>
+
                     <div className="search-box" style={{ width: '100%', marginBottom: '1rem' }}>
                         <Search size={18} />
-                        <input type="text" placeholder="Search messages..." />
+                        <input type="text" placeholder="Search conversations..." />
                     </div>
                     <div style={{ display: 'flex', gap: '0.5rem' }}>
-                        <button style={{ padding: '0.25rem 0.75rem', borderRadius: '999px', background: '#e5e7eb', fontSize: '0.85rem', fontWeight: '500', border: 'none' }}>All</button>
+                        <button style={{ padding: '0.25rem 0.75rem', borderRadius: '999px', background: '#e0f2fe', color: '#0369a1', fontSize: '0.85rem', fontWeight: '500', border: 'none' }}>Facebook</button>
                         <button style={{ padding: '0.25rem 0.75rem', borderRadius: '999px', background: 'white', border: '1px solid #e5e7eb', fontSize: '0.85rem', color: '#6b7280' }}>Unread</button>
-                        <button style={{ padding: '0.25rem 0.75rem', borderRadius: '999px', background: 'white', border: '1px solid #e5e7eb', fontSize: '0.85rem', color: '#6b7280' }}>Mentioned</button>
                     </div>
                 </div>
 
@@ -55,7 +55,7 @@ export default function InboxPage() {
                                 borderBottom: '1px solid #f9fafb',
                                 cursor: 'pointer',
                                 background: activeChat.id === chat.id ? '#f0fdfa' : 'white',
-                                borderLeft: activeChat.id === chat.id ? '4px solid #19877b' : '4px solid transparent'
+                                borderLeft: activeChat.id === chat.id ? '4px solid #1877f2' : '4px solid transparent'
                             }}
                         >
                             <div style={{ position: 'relative' }}>
@@ -69,9 +69,7 @@ export default function InboxPage() {
                                     position: 'absolute', bottom: -2, right: -2,
                                     background: 'white', borderRadius: '50%', padding: '2px'
                                 }}>
-                                    {chat.channel === 'whatsapp' && <MessageCircle size={14} fill="#25d366" color="#25d366" />}
-                                    {chat.channel === 'facebook' && <Facebook size={14} fill="#1877f2" color="#1877f2" />}
-                                    {chat.channel === 'instagram' && <Instagram size={14} color="#E1306C" />}
+                                    <Facebook size={14} fill="#1877f2" color="#1877f2" />
                                 </div>
                             </div>
                             <div style={{ flex: 1, overflow: 'hidden' }}>
@@ -111,7 +109,7 @@ export default function InboxPage() {
                         <Video size={20} style={{ cursor: 'pointer' }} />
                         <MoreVertical size={20} style={{ cursor: 'pointer' }} />
                         <button style={{
-                            background: '#19877b', color: 'white', border: 'none',
+                            background: '#1877f2', color: 'white', border: 'none',
                             borderRadius: '6px', padding: '0.5rem 1rem', fontSize: '0.85rem',
                             display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer'
                         }}>
@@ -133,7 +131,7 @@ export default function InboxPage() {
                                 borderRadius: '12px',
                                 borderTopLeftRadius: msg.sender === 'user' ? '0' : '12px',
                                 borderTopRightRadius: msg.sender === 'agent' ? '0' : '12px',
-                                background: msg.sender === 'agent' ? '#19877b' : 'white',
+                                background: msg.sender === 'agent' ? '#1877f2' : 'white',
                                 color: msg.sender === 'agent' ? 'white' : '#1f2937',
                                 boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
                                 lineHeight: '1.5'
@@ -164,10 +162,9 @@ export default function InboxPage() {
                             <div style={{ display: 'flex', gap: '1rem', color: '#6b7280' }}>
                                 <Smile size={20} style={{ cursor: 'pointer' }} />
                                 <Paperclip size={20} style={{ cursor: 'pointer' }} />
-                                {/* Template or Quick Reply icon could go here */}
                             </div>
                             <button style={{
-                                background: '#19877b', color: 'white', border: 'none', borderRadius: '6px',
+                                background: '#1877f2', color: 'white', border: 'none', borderRadius: '6px',
                                 width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center',
                                 cursor: 'pointer'
                             }}>
@@ -189,20 +186,14 @@ export default function InboxPage() {
                         {activeChat.avatar}
                     </div>
                     <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold' }}>{activeChat.name}</h3>
-                    <p style={{ color: '#6b7280', fontSize: '0.9rem' }}>+1 (555) 123-4567</p>
+                    <p style={{ color: '#6b7280', fontSize: '0.9rem' }}>+1 (555) 987-6543</p>
 
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '1rem' }}>
                         <button style={{
                             width: '36px', height: '36px', borderRadius: '50%', border: '1px solid #e5e7eb',
                             display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#6b7280'
                         }}>
-                            <User size={18} />
-                        </button>
-                        <button style={{
-                            width: '36px', height: '36px', borderRadius: '50%', border: '1px solid #e5e7eb',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#6b7280'
-                        }}>
-                            <Mail size={18} />
+                            <Facebook size={18} />
                         </button>
                     </div>
                 </div>
@@ -213,40 +204,9 @@ export default function InboxPage() {
                             Tags
                         </h4>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                            <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.5rem', background: '#f3f4f6', borderRadius: '4px', color: '#374151' }}>VIP Customer</span>
-                            <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.5rem', background: '#fee2e2', borderRadius: '4px', color: '#b91c1c' }}>Issue Report</span>
+                            <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.5rem', background: '#f3f4f6', borderRadius: '4px', color: '#374151' }}>Messenger User</span>
                             <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.5rem', border: '1px dashed #d1d5db', borderRadius: '4px', color: '#6b7280', cursor: 'pointer' }}>+ Add Tag</span>
                         </div>
-                    </div>
-
-                    <div style={{ marginBottom: '2rem' }}>
-                        <h4 style={{ fontSize: '0.85rem', fontWeight: '600', color: '#9ca3af', textTransform: 'uppercase', marginBottom: '0.75rem', letterSpacing: '0.05em' }}>
-                            Info
-                        </h4>
-                        <div style={{ fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <span style={{ color: '#6b7280' }}>Email</span>
-                                <span style={{ fontWeight: '500' }}>{activeChat.name.split(' ')[0].toLowerCase()}@gmail.com</span>
-                            </div>
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <span style={{ color: '#6b7280' }}>City</span>
-                                <span style={{ fontWeight: '500' }}>New York, USA</span>
-                            </div>
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <span style={{ color: '#6b7280' }}>Last Order</span>
-                                <span style={{ fontWeight: '500' }}>#998877</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h4 style={{ fontSize: '0.85rem', fontWeight: '600', color: '#9ca3af', textTransform: 'uppercase', marginBottom: '0.75rem', letterSpacing: '0.05em' }}>
-                            Notes
-                        </h4>
-                        <textarea
-                            placeholder="Add a private note..."
-                            style={{ width: '100%', minHeight: '80px', padding: '0.75rem', borderRadius: '8px', border: '1px solid #e5e7eb', fontSize: '0.85rem', fontFamily: 'inherit' }}
-                        ></textarea>
                     </div>
                 </div>
             </div>

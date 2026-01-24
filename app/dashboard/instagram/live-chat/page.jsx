@@ -1,27 +1,22 @@
 "use client";
 import React, { useState } from 'react';
 import {
-    Search, Filter, Paperclip, Send, Smile, MoreVertical, Phone, Video, Tag,
-    MessageCircle, Facebook, Instagram, Check, MoreHorizontal, User, Calendar, Mail
+    Search, Paperclip, Send, Smile, MoreVertical, Phone, Video,
+    Instagram, Check
 } from 'lucide-react';
 
 const CONVERSATIONS = [
-    { id: 1, name: "Alice Freeman", msg: "Hey! Can I get a refund?", time: "2m", unread: 2, channel: "whatsapp", avatar: "AF", type: "text" },
-    { id: 2, name: "Bob Smith", msg: "Is this item available in red?", time: "15m", unread: 0, channel: "facebook", avatar: "BS", type: "text" },
     { id: 3, name: "Charlie Kim", msg: "Thanks for the help!", time: "1h", unread: 0, channel: "instagram", avatar: "CK", type: "text" },
-    { id: 4, name: "David Lee", msg: "Where is my order #1234?", time: "3h", unread: 1, channel: "whatsapp", avatar: "DL", type: "text" },
-    { id: 5, name: "Eva Green", msg: "Love the new features!", time: "1d", unread: 0, channel: "instagram", avatar: "EG", type: "text" },
+    { id: 5, name: "Eva Green", msg: "Love the new features!", time: "1d", unread: 2, channel: "instagram", avatar: "EG", type: "text" },
 ];
 
 const MESSAGES = [
-    { id: 1, sender: "user", text: "Hi, I have a problem with my order.", time: "10:30 AM" },
-    { id: 2, sender: "agent", text: "Hello! I'd be happy to help. What is your order number?", time: "10:32 AM" },
-    { id: 3, sender: "user", text: "It's #998877.", time: "10:33 AM" },
-    { id: 4, sender: "agent", text: "Checking that for you right now...", time: "10:33 AM" },
-    { id: 5, sender: "user", text: "Can I get a refund if it hasn't shipped?", time: "10:35 AM" },
+    { id: 1, sender: "user", text: "Hi, I love your latest post!", time: "10:30 AM" },
+    { id: 2, sender: "agent", text: "Thank you so much! We really appreciate it.", time: "10:32 AM" },
+    { id: 3, sender: "user", text: "When will you post more?", time: "10:33 AM" },
 ];
 
-export default function InboxPage() {
+export default function InstagramLiveChatPage() {
     const [activeChat, setActiveChat] = useState(CONVERSATIONS[0]);
     const [inputText, setInputText] = useState("");
 
@@ -31,15 +26,18 @@ export default function InboxPage() {
             {/* LEFT COLUMN: Conversation List */}
             <div style={{ width: '350px', borderRight: '1px solid #e5e7eb', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ padding: '1rem', borderBottom: '1px solid #f3f4f6' }}>
-                    <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1rem' }}>Inbox</h2>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
+                        <Instagram size={24} color="#E1306C" />
+                        <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>Instagram Direct</h2>
+                    </div>
+
                     <div className="search-box" style={{ width: '100%', marginBottom: '1rem' }}>
                         <Search size={18} />
-                        <input type="text" placeholder="Search messages..." />
+                        <input type="text" placeholder="Search DMs..." />
                     </div>
                     <div style={{ display: 'flex', gap: '0.5rem' }}>
-                        <button style={{ padding: '0.25rem 0.75rem', borderRadius: '999px', background: '#e5e7eb', fontSize: '0.85rem', fontWeight: '500', border: 'none' }}>All</button>
-                        <button style={{ padding: '0.25rem 0.75rem', borderRadius: '999px', background: 'white', border: '1px solid #e5e7eb', fontSize: '0.85rem', color: '#6b7280' }}>Unread</button>
-                        <button style={{ padding: '0.25rem 0.75rem', borderRadius: '999px', background: 'white', border: '1px solid #e5e7eb', fontSize: '0.85rem', color: '#6b7280' }}>Mentioned</button>
+                        <button style={{ padding: '0.25rem 0.75rem', borderRadius: '999px', background: '#fce7f3', color: '#be185d', fontSize: '0.85rem', fontWeight: '500', border: 'none' }}>Instagram</button>
+                        <button style={{ padding: '0.25rem 0.75rem', borderRadius: '999px', background: 'white', border: '1px solid #e5e7eb', fontSize: '0.85rem', color: '#6b7280' }}>Requests</button>
                     </div>
                 </div>
 
@@ -54,13 +52,13 @@ export default function InboxPage() {
                                 gap: '1rem',
                                 borderBottom: '1px solid #f9fafb',
                                 cursor: 'pointer',
-                                background: activeChat.id === chat.id ? '#f0fdfa' : 'white',
-                                borderLeft: activeChat.id === chat.id ? '4px solid #19877b' : '4px solid transparent'
+                                background: activeChat.id === chat.id ? '#fdf2f8' : 'white',
+                                borderLeft: activeChat.id === chat.id ? '4px solid #E1306C' : '4px solid transparent'
                             }}
                         >
                             <div style={{ position: 'relative' }}>
                                 <div style={{
-                                    width: '48px', height: '48px', borderRadius: '50%', background: '#e0f2fe', color: '#0369a1',
+                                    width: '48px', height: '48px', borderRadius: '50%', background: '#fce7f3', color: '#be185d',
                                     display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '600'
                                 }}>
                                     {chat.avatar}
@@ -69,9 +67,7 @@ export default function InboxPage() {
                                     position: 'absolute', bottom: -2, right: -2,
                                     background: 'white', borderRadius: '50%', padding: '2px'
                                 }}>
-                                    {chat.channel === 'whatsapp' && <MessageCircle size={14} fill="#25d366" color="#25d366" />}
-                                    {chat.channel === 'facebook' && <Facebook size={14} fill="#1877f2" color="#1877f2" />}
-                                    {chat.channel === 'instagram' && <Instagram size={14} color="#E1306C" />}
+                                    <Instagram size={14} color="#E1306C" />
                                 </div>
                             </div>
                             <div style={{ flex: 1, overflow: 'hidden' }}>
@@ -103,7 +99,7 @@ export default function InboxPage() {
                             fontSize: '0.75rem', padding: '0.25rem 0.5rem', borderRadius: '4px',
                             background: '#dcfce7', color: '#166534', fontWeight: '600'
                         }}>
-                            Open
+                            Active
                         </span>
                     </div>
                     <div style={{ display: 'flex', gap: '1rem', color: '#6b7280' }}>
@@ -111,7 +107,7 @@ export default function InboxPage() {
                         <Video size={20} style={{ cursor: 'pointer' }} />
                         <MoreVertical size={20} style={{ cursor: 'pointer' }} />
                         <button style={{
-                            background: '#19877b', color: 'white', border: 'none',
+                            background: '#c32aa3', color: 'white', border: 'none',
                             borderRadius: '6px', padding: '0.5rem 1rem', fontSize: '0.85rem',
                             display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer'
                         }}>
@@ -133,7 +129,9 @@ export default function InboxPage() {
                                 borderRadius: '12px',
                                 borderTopLeftRadius: msg.sender === 'user' ? '0' : '12px',
                                 borderTopRightRadius: msg.sender === 'agent' ? '0' : '12px',
-                                background: msg.sender === 'agent' ? '#19877b' : 'white',
+                                background: msg.sender === 'agent' ? '#E1306C' : 'white',
+                                // Gradient for Insta agent messages?
+                                backgroundImage: msg.sender === 'agent' ? 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)' : 'none',
                                 color: msg.sender === 'agent' ? 'white' : '#1f2937',
                                 boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
                                 lineHeight: '1.5'
@@ -152,7 +150,7 @@ export default function InboxPage() {
                         display: 'flex', flexDirection: 'column', gap: '0.5rem'
                     }}>
                         <textarea
-                            placeholder="Type a message..."
+                            placeholder="Message..."
                             style={{
                                 resize: 'none', border: 'none', outline: 'none', width: '100%',
                                 minHeight: '60px', fontFamily: 'inherit', fontSize: '0.95rem'
@@ -164,10 +162,9 @@ export default function InboxPage() {
                             <div style={{ display: 'flex', gap: '1rem', color: '#6b7280' }}>
                                 <Smile size={20} style={{ cursor: 'pointer' }} />
                                 <Paperclip size={20} style={{ cursor: 'pointer' }} />
-                                {/* Template or Quick Reply icon could go here */}
                             </div>
                             <button style={{
-                                background: '#19877b', color: 'white', border: 'none', borderRadius: '6px',
+                                background: '#c32aa3', color: 'white', border: 'none', borderRadius: '6px',
                                 width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center',
                                 cursor: 'pointer'
                             }}>
@@ -182,27 +179,21 @@ export default function InboxPage() {
             <div style={{ width: '300px', borderLeft: '1px solid #e5e7eb', background: 'white', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ padding: '2rem 1rem', borderBottom: '1px solid #f3f4f6', textAlign: 'center' }}>
                     <div style={{
-                        width: '80px', height: '80px', borderRadius: '50%', background: '#e0f2fe', color: '#0369a1',
+                        width: '80px', height: '80px', borderRadius: '50%', background: '#fce7f3', color: '#be185d',
                         display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', fontWeight: 'bold',
                         margin: '0 auto 1rem auto'
                     }}>
                         {activeChat.avatar}
                     </div>
                     <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold' }}>{activeChat.name}</h3>
-                    <p style={{ color: '#6b7280', fontSize: '0.9rem' }}>+1 (555) 123-4567</p>
+                    <p style={{ color: '#6b7280', fontSize: '0.9rem' }}>@charlie_kim</p>
 
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '1rem' }}>
                         <button style={{
                             width: '36px', height: '36px', borderRadius: '50%', border: '1px solid #e5e7eb',
                             display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#6b7280'
                         }}>
-                            <User size={18} />
-                        </button>
-                        <button style={{
-                            width: '36px', height: '36px', borderRadius: '50%', border: '1px solid #e5e7eb',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#6b7280'
-                        }}>
-                            <Mail size={18} />
+                            <Instagram size={18} color="#E1306C" />
                         </button>
                     </div>
                 </div>
@@ -213,40 +204,8 @@ export default function InboxPage() {
                             Tags
                         </h4>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                            <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.5rem', background: '#f3f4f6', borderRadius: '4px', color: '#374151' }}>VIP Customer</span>
-                            <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.5rem', background: '#fee2e2', borderRadius: '4px', color: '#b91c1c' }}>Issue Report</span>
-                            <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.5rem', border: '1px dashed #d1d5db', borderRadius: '4px', color: '#6b7280', cursor: 'pointer' }}>+ Add Tag</span>
+                            <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.5rem', background: '#f3f4f6', borderRadius: '4px', color: '#374151' }}>Referral</span>
                         </div>
-                    </div>
-
-                    <div style={{ marginBottom: '2rem' }}>
-                        <h4 style={{ fontSize: '0.85rem', fontWeight: '600', color: '#9ca3af', textTransform: 'uppercase', marginBottom: '0.75rem', letterSpacing: '0.05em' }}>
-                            Info
-                        </h4>
-                        <div style={{ fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <span style={{ color: '#6b7280' }}>Email</span>
-                                <span style={{ fontWeight: '500' }}>{activeChat.name.split(' ')[0].toLowerCase()}@gmail.com</span>
-                            </div>
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <span style={{ color: '#6b7280' }}>City</span>
-                                <span style={{ fontWeight: '500' }}>New York, USA</span>
-                            </div>
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <span style={{ color: '#6b7280' }}>Last Order</span>
-                                <span style={{ fontWeight: '500' }}>#998877</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h4 style={{ fontSize: '0.85rem', fontWeight: '600', color: '#9ca3af', textTransform: 'uppercase', marginBottom: '0.75rem', letterSpacing: '0.05em' }}>
-                            Notes
-                        </h4>
-                        <textarea
-                            placeholder="Add a private note..."
-                            style={{ width: '100%', minHeight: '80px', padding: '0.75rem', borderRadius: '8px', border: '1px solid #e5e7eb', fontSize: '0.85rem', fontFamily: 'inherit' }}
-                        ></textarea>
                     </div>
                 </div>
             </div>

@@ -14,3 +14,33 @@ body {
 * {
   box-sizing: border-box;
 }
+
+/* Custom Thin Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  /* Ultra-thin */
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  /* Completely invisible track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  /* Subtle gray */
+  border-radius: 99px;
+  transition: background-color 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+  /* Darker on hover */
+}
+
+/* Firefox compatibility */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
