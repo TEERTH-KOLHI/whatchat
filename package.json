@@ -9,8 +9,10 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@whiskeysockets/baileys": "^7.0.0-rc.9",
     "lucide-react": "^0.563.0",
     "next": "16.1.4",
+    "qrcode": "^1.5.4",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "recharts": "^3.7.0"

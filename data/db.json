@@ -1,0 +1,380 @@
+{
+  "whatsapp": null,
+  "conversations": [
+    {
+      "id": "1",
+      "name": "Alice Freeman",
+      "msg": "Hey! Can I get a refund?",
+      "time": "2m",
+      "unread": 2,
+      "channel": "whatsapp",
+      "avatar": "AF",
+      "type": "text"
+    },
+    {
+      "id": "2",
+      "name": "Bob Smith",
+      "msg": "Is this item available in red?",
+      "time": "15m",
+      "unread": 0,
+      "channel": "facebook",
+      "avatar": "BS",
+      "type": "text"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "conversationId": "1",
+      "sender": "user",
+      "text": "Hi, I have a problem.",
+      "time": "10:30 AM"
+    },
+    {
+      "id": "m2",
+      "conversationId": "1",
+      "sender": "agent",
+      "text": "Hello! How can I help?",
+      "time": "10:31 AM"
+    },
+    {
+      "id": "m3",
+      "conversationId": "1",
+      "sender": "user",
+      "text": "Hey! Can I get a refund?",
+      "time": "10:32 AM"
+    },
+    {
+      "id": "m4",
+      "conversationId": "2",
+      "sender": "user",
+      "text": "Is this available in red?",
+      "time": "09:00 AM"
+    },
+    {
+      "id": "5862054a-8482-4c8e-9fd0-6bc73d10cad2",
+      "sender": "agent",
+      "text": "Hello",
+      "time": "08:31 AM"
+    },
+    {
+      "id": "49b10fb8-8279-4ae2-825e-f3f621281add",
+      "sender": "agent",
+      "text": "Hello, there",
+      "time": "06:35 PM"
+    }
+  ],
+  "catalogs": [],
+  "orders": [],
+  "appointment_campaigns": [],
+  "bookings": [],
+  "facebook_pages": [
+    {
+      "name": "Global Tech Store",
+      "pageId": "10554238910",
+      "followers": 12500,
+      "picture": "https://ui-avatars.com/api/?name=Tech+Store&background=0D8ABC&color=fff",
+      "id": "42314871-c2a7-42a9-9bbe-b2ee023c5bb6",
+      "connectedAt": "1/25/2026"
+    }
+  ],
+  "facebook_bots": [
+    {
+      "name": "ahkd",
+      "triggerKeywords": "price",
+      "type": "Text Trigger",
+      "reply": "50",
+      "id": "cb8bc269-aece-4ab7-9e68-6ea45d54f49e",
+      "status": "Active",
+      "updatedAt": "1/25/2026"
+    }
+  ],
+  "subscribers": [
+    {
+      "name": "Jane",
+      "phone": "05840938503840",
+      "labels": [
+        "New"
+      ],
+      "id": "928166bf-4869-40ef-b60d-2cf64698e314",
+      "joined": "1/25/2026",
+      "status": "Active"
+    },
+    {
+      "name": "vsdaf",
+      "phone": "534534",
+      "labels": [
+        "New"
+      ],
+      "id": "e977a96e-5ed1-45d5-a86d-cc18402bd20f",
+      "joined": "1/25/2026",
+      "status": "Active"
+    }
+  ],
+  "facebook_campaigns": [
+    {
+      "name": "grok",
+      "message": "jejoia",
+      "scheduledFor": "2026-01-25T18:31",
+      "id": "a3b17aaf-857f-4ec7-b2a5-30f8d572e0ad",
+      "recipients": 2268,
+      "status": "Completed",
+      "stats": {
+        "sent": 2268,
+        "delivered": 2222,
+        "openRate": "89%"
+      },
+      "createdAt": "1/25/2026"
+    }
+  ],
+  "facebook_posts": [
+    {
+      "id": "p1",
+      "description": "Check out our new summer collection! ☀️",
+      "likes": 120,
+      "comments": 45,
+      "thumbnail": null,
+      "createdAt": "Oct 10, 2024"
+    },
+    {
+      "id": "p2",
+      "description": "We are hiring! Join our team today.",
+      "likes": 350,
+      "comments": 89,
+      "thumbnail": null,
+      "createdAt": "Oct 12, 2024"
+    },
+    {
+      "id": "p3",
+      "description": "Flash Sale starts in 1 hour! ⏰",
+      "likes": 500,
+      "comments": 120,
+      "thumbnail": null,
+      "createdAt": "Oct 15, 2024"
+    }
+  ],
+  "auto_replies": [
+    {
+      "postId": "p1",
+      "enabled": false,
+      "replyText": ""
+    }
+  ],
+  "instagram_bots": [
+    {
+      "name": "fasd",
+      "triggerKeywords": "collab",
+      "type": "DM Auto-Reply",
+      "reply": "jkljdal",
+      "id": "baf6fe8c-6985-4825-b408-5e1680727ad2",
+      "status": "Active",
+      "updatedAt": "1/25/2026"
+    }
+  ],
+  "instagram_posts": [
+    {
+      "id": "ip1",
+      "description": "Loving this new vibe! 📸 #summer",
+      "likes": 520,
+      "comments": 34,
+      "thumbnail": null,
+      "createdAt": "Oct 12, 2024"
+    },
+    {
+      "id": "ip2",
+      "description": "New product drop tomorrow! Stay tuned.",
+      "likes": 890,
+      "comments": 112,
+      "thumbnail": null,
+      "createdAt": "Oct 14, 2024"
+    },
+    {
+      "id": "ip3",
+      "description": "Behind the scenes at the office.",
+      "likes": 210,
+      "comments": 15,
+      "thumbnail": null,
+      "createdAt": "Oct 18, 2024"
+    }
+  ],
+  "user_profile": {
+    "name": "Gelo doy",
+    "email": "gelodoy360@drenar.com",
+    "phone": "",
+    "address": "",
+    "timezone": "kolkata",
+    "language": "english",
+    "translationLanguage": "abkhazian",
+    "twoFactorEnabled": false
+  },
+  "role_permissions": [
+    {
+      "module": "Dashboard",
+      "admin": true,
+      "agent": true,
+      "viewer": true
+    },
+    {
+      "module": "Conversations",
+      "admin": true,
+      "agent": true,
+      "viewer": false
+    },
+    {
+      "module": "Customers",
+      "admin": true,
+      "agent": true,
+      "viewer": true
+    },
+    {
+      "module": "Bot Manager",
+      "admin": true,
+      "agent": false,
+      "viewer": false
+    },
+    {
+      "module": "Broadcasting",
+      "admin": true,
+      "agent": false,
+      "viewer": false
+    },
+    {
+      "module": "Settings",
+      "admin": true,
+      "agent": false,
+      "viewer": false
+    }
+  ],
+  "managed_users": [
+    {
+      "id": "u1",
+      "name": "John Doe",
+      "email": "john@example.com",
+      "role": "Admin",
+      "status": "Active",
+      "package": "Pro",
+      "expiry": "2026-01-01",
+      "created": "2025-01-01",
+      "lastLogin": "2m ago"
+    },
+    {
+      "id": "u2",
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "role": "Agent",
+      "status": "Active",
+      "package": "Basic",
+      "expiry": "2025-06-01",
+      "created": "2025-02-15",
+      "lastLogin": "1d ago"
+    }
+  ],
+  "addons": [
+    {
+      "id": 1,
+      "name": "Facebook Poster",
+      "desc": "Auto-post text, image, link, video to Facebook Pages & Groups.",
+      "price": "$19/mo",
+      "icon": "Facebook",
+      "color": "#1877f2",
+      "status": "active",
+      "version": "2.1.0"
+    },
+    {
+      "id": 2,
+      "name": "Instagram Auto Reply",
+      "desc": "Automatically reply to comments and mentions on Instagram.",
+      "price": "$25/mo",
+      "icon": "Instagram",
+      "color": "#E1306C",
+      "status": "available",
+      "version": "1.5.3"
+    },
+    {
+      "id": 3,
+      "name": "Sms Broadcasting",
+      "desc": "Send bulk SMS to your subscribers via Twilio/Nexmo.",
+      "price": "Free",
+      "icon": "MessageCircle",
+      "color": "#10b981",
+      "status": "installed",
+      "version": "3.0.1"
+    },
+    {
+      "id": 4,
+      "name": "WooCommerce Connection",
+      "desc": "Sync products and recover abandoned carts automatically.",
+      "price": "$39/mo",
+      "icon": "ShoppingCart",
+      "color": "#965df4",
+      "status": "available",
+      "version": "4.2.0"
+    },
+    {
+      "id": 5,
+      "name": "Stripe Payments",
+      "desc": "Collect payments directly within WhatsApp chat flow.",
+      "price": "$29/mo",
+      "icon": "CreditCard",
+      "color": "#635bff",
+      "status": "active",
+      "version": "2.0.0"
+    },
+    {
+      "id": 6,
+      "name": "Advanced Analytics",
+      "desc": "Detailed reports on subscriber growth and message delivery.",
+      "price": "$15/mo",
+      "icon": "BarChart3",
+      "color": "#f59e0b",
+      "status": "available",
+      "version": "1.2.0"
+    },
+    {
+      "id": 7,
+      "name": "AI Content Generator",
+      "desc": "Generate reply templates using OpenAI GPT-4.",
+      "price": "$49/mo",
+      "icon": "Zap",
+      "color": "#ef4444",
+      "status": "available",
+      "version": "1.0.0"
+    },
+    {
+      "id": 8,
+      "name": "Bot Template Manager",
+      "desc": "Import/Export bot flows and manage templates.",
+      "price": "Free",
+      "icon": "Bot",
+      "color": "#3b82f6",
+      "status": "installed",
+      "version": "1.1.5"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "n1",
+      "title": "Welcome to WhatChat",
+      "message": "Thanks for joining! Set up your first bot now.",
+      "time": "2m ago",
+      "read": false,
+      "type": "success"
+    },
+    {
+      "id": "n2",
+      "title": "System Update",
+      "message": "New features added to Bot Manager.",
+      "time": "1h ago",
+      "read": false,
+      "type": "info"
+    },
+    {
+      "id": "n3",
+      "title": "Subscription Expiring",
+      "message": "Your trial expires in 7 days.",
+      "time": "1d ago",
+      "read": true,
+      "type": "warning"
+    }
+  ]
+}

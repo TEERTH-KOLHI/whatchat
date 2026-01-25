@@ -1,98 +1,59 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Package, Download, Search, Filter, ShoppingCart, MessageCircle,
     Facebook, Instagram, Bot, CreditCard, BarChart3, Zap, CheckCircle2
 } from 'lucide-react';
 
-const ADDONS = [
-    {
-        id: 1,
-        name: "Facebook Poster",
-        desc: "Auto-post text, image, link, video to Facebook Pages & Groups.",
-        price: "$19/mo",
-        icon: Facebook,
-        color: "#1877f2",
-        status: "active", // active, installed, available
-        version: "2.1.0"
-    },
-    {
-        id: 2,
-        name: "Instagram Auto Reply",
-        desc: "Automatically reply to comments and mentions on Instagram.",
-        price: "$25/mo",
-        icon: Instagram,
-        color: "#E1306C",
-        status: "available",
-        version: "1.5.3"
-    },
-    {
-        id: 3,
-        name: "Sms Broadcasting",
-        desc: "Send bulk SMS to your subscribers via Twilio/Nexmo.",
-        price: "Free",
-        icon: MessageCircle,
-        color: "#10b981",
-        status: "installed",
-        version: "3.0.1"
-    },
-    {
-        id: 4,
-        name: "WooCommerce Connection",
-        desc: "Sync products and recover abandoned carts automatically.",
-        price: "$39/mo",
-        icon: ShoppingCart,
-        color: "#965df4",
-        status: "available",
-        version: "4.2.0"
-    },
-    {
-        id: 5,
-        name: "Stripe Payments",
-        desc: "Collect payments directly within WhatsApp chat flow.",
-        price: "$29/mo",
-        icon: CreditCard,
-        color: "#635bff",
-        status: "active",
-        version: "2.0.0"
-    },
-    {
-        id: 6,
-        name: "Advanced Analytics",
-        desc: "Detailed reports on subscriber growth and message delivery.",
-        price: "$15/mo",
-        icon: BarChart3,
-        color: "#f59e0b",
-        status: "available",
-        version: "1.2.0"
-    },
-    {
-        id: 7,
-        name: "AI Content Generator",
-        desc: "Generate reply templates using OpenAI GPT-4.",
-        price: "$49/mo",
-        icon: Zap,
-        color: "#ef4444",
-        status: "available",
-        version: "1.0.0"
-    },
-    {
-        id: 8,
-        name: "Bot Template Manager",
-        desc: "Import/Export bot flows and manage templates.",
-        price: "Free",
-        icon: Bot,
-        color: "#3b82f6",
-        status: "installed",
-        version: "1.1.5"
-    }
-];
+// Static Icon Map (cannot be sent via JSON API)
+const ICON_MAP = {
+    Facebook, Instagram, MessageCircle, ShoppingCart, CreditCard, BarChart3, Zap, Bot
+};
 
 export default function AddonManagerPage() {
+    const [addons, setAddons] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState('');
     const [filter, setFilter] = useState('all'); // all, installed, available
+    const [processingId, setProcessingId] = useState(null);
 
-    const filteredAddons = ADDONS.filter(addon => {
+    useEffect(() => {
+        fetchAddons();
+    }, []);
+
+    const fetchAddons = async () => {
+        setLoading(true);
+        try {
+            const res = await fetch('/api/addons');
+            const data = await res.json();
+            setAddons(data.addons || []);
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleUpdateStatus = async (id, status) => {
+        setProcessingId(id);
+        try {
+            const res = await fetch('/api/addons', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id, status })
+            });
+            if (res.ok) {
+                // Optimistic update
+                setAddons(prev => prev.map(a => a.id === id ? { ...a, status } : a));
+            }
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setProcessingId(null);
+        }
+    };
+
+    const filteredAddons = addons.filter(addon => {
         const matchesSearch = addon.name.toLowerCase().includes(search.toLowerCase()) ||
             addon.desc.toLowerCase().includes(search.toLowerCase());
         const matchesFilter = filter === 'all'
@@ -103,6 +64,11 @@ export default function AddonManagerPage() {
 
         return matchesSearch && matchesFilter;
     });
+
+    const getIcon = (iconName) => {
+        const IconComponent = ICON_MAP[iconName] || Package;
+        return IconComponent;
+    };
 
     return (
         <div className="dashboard-page" style={{ paddingBottom: '3rem' }}>
@@ -150,110 +116,133 @@ export default function AddonManagerPage() {
                         }}
                     >
                         {tab} ({
-                            tab === 'all' ? ADDONS.length :
-                                tab === 'installed' ? ADDONS.filter(a => a.status !== 'available').length :
-                                    ADDONS.filter(a => a.status === 'available').length
+                            loading ? '...' :
+                                tab === 'all' ? addons.length :
+                                    tab === 'installed' ? addons.filter(a => a.status !== 'available').length :
+                                        addons.filter(a => a.status === 'available').length
                         })
                     </button>
                 ))}
             </div>
 
             {/* Addons Grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.5rem' }}>
-                {filteredAddons.map((addon) => (
-                    <div key={addon.id} className="card-hover-effect" style={{
-                        backgroundColor: 'white',
-                        borderRadius: '12px',
-                        border: '1px solid #e5e7eb',
-                        padding: '1.5rem',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'space-between',
-                        height: '100%'
-                    }}>
-                        <div>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '1rem' }}>
-                                <div style={{
-                                    width: '48px',
-                                    height: '48px',
-                                    borderRadius: '10px',
-                                    backgroundColor: `${addon.color}15`, // 10% opacity bg
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    color: addon.color
-                                }}>
-                                    <addon.icon size={24} />
+            {loading ? (
+                <div style={{ textAlign: 'center', padding: '3rem', color: '#6b7280' }}>Loading addons...</div>
+            ) : (
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.5rem' }}>
+                    {filteredAddons.map((addon) => {
+                        const Icon = getIcon(addon.icon);
+                        const isProcessing = processingId === addon.id;
+
+                        return (
+                            <div key={addon.id} className="card-hover-effect" style={{
+                                backgroundColor: 'white',
+                                borderRadius: '12px',
+                                border: '1px solid #e5e7eb',
+                                padding: '1.5rem',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'space-between',
+                                height: '100%'
+                            }}>
+                                <div>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '1rem' }}>
+                                        <div style={{
+                                            width: '48px',
+                                            height: '48px',
+                                            borderRadius: '10px',
+                                            backgroundColor: `${addon.color}15`, // 10% opacity bg
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            color: addon.color
+                                        }}>
+                                            <Icon size={24} />
+                                        </div>
+                                        <div style={{
+                                            fontSize: '0.75rem',
+                                            fontWeight: '600',
+                                            padding: '0.25rem 0.75rem',
+                                            borderRadius: '999px',
+                                            backgroundColor: addon.price === 'Free' ? '#dcfce7' : '#f3f4f6',
+                                            color: addon.price === 'Free' ? '#166534' : '#374151'
+                                        }}>
+                                            {addon.price}
+                                        </div>
+                                    </div>
+
+                                    <h3 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#111827', marginBottom: '0.5rem' }}>
+                                        {addon.name}
+                                    </h3>
+                                    <p style={{ fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.5', marginBottom: '1.5rem' }}>
+                                        {addon.desc}
+                                    </p>
                                 </div>
-                                <div style={{
-                                    fontSize: '0.75rem',
-                                    fontWeight: '600',
-                                    padding: '0.25rem 0.75rem',
-                                    borderRadius: '999px',
-                                    backgroundColor: addon.price === 'Free' ? '#dcfce7' : '#f3f4f6',
-                                    color: addon.price === 'Free' ? '#166534' : '#374151'
-                                }}>
-                                    {addon.price}
+
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '1rem', borderTop: '1px solid #f3f4f6' }}>
+                                    <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>v{addon.version}</span>
+
+                                    {addon.status === 'active' ? (
+                                        <button
+                                            onClick={() => handleUpdateStatus(addon.id, 'installed')}
+                                            disabled={isProcessing}
+                                            style={{
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '0.5rem',
+                                                background: 'white',
+                                                border: '1px solid #e5e7eb',
+                                                padding: '0.5rem 1rem',
+                                                borderRadius: '6px',
+                                                fontSize: '0.85rem',
+                                                color: '#059669',
+                                                fontWeight: '500',
+                                                cursor: 'pointer'
+                                            }}>
+                                            {isProcessing ? '...' : <><CheckCircle2 size={16} /> Active</>}
+                                        </button>
+                                    ) : addon.status === 'installed' ? (
+                                        <button
+                                            className="action-btn"
+                                            onClick={() => handleUpdateStatus(addon.id, 'active')}
+                                            disabled={isProcessing}
+                                            style={{
+                                                padding: '0.5rem 1rem',
+                                                fontSize: '0.85rem',
+                                                background: '#111827',
+                                                color: 'white',
+                                                border: 'none',
+                                                borderRadius: '6px',
+                                                cursor: 'pointer'
+                                            }}>
+                                            {isProcessing ? 'Activating...' : 'Activate'}
+                                        </button>
+                                    ) : (
+                                        <button
+                                            className="action-btn"
+                                            onClick={() => handleUpdateStatus(addon.id, 'installed')}
+                                            disabled={isProcessing}
+                                            style={{
+                                                padding: '0.5rem 1rem',
+                                                fontSize: '0.85rem',
+                                                background: '#f3f4f6',
+                                                color: '#374151',
+                                                border: 'none',
+                                                borderRadius: '6px',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '0.5rem',
+                                                cursor: 'pointer'
+                                            }}>
+                                            {isProcessing ? 'Installing...' : <><Download size={16} /> Install</>}
+                                        </button>
+                                    )}
                                 </div>
                             </div>
-
-                            <h3 style={{ fontSize: '1.1rem', fontWeight: '600', color: '#111827', marginBottom: '0.5rem' }}>
-                                {addon.name}
-                            </h3>
-                            <p style={{ fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.5', marginBottom: '1.5rem' }}>
-                                {addon.desc}
-                            </p>
-                        </div>
-
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '1rem', borderTop: '1px solid #f3f4f6' }}>
-                            <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>v{addon.version}</span>
-
-                            {addon.status === 'active' ? (
-                                <button style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
-                                    background: 'white',
-                                    border: '1px solid #e5e7eb',
-                                    padding: '0.5rem 1rem',
-                                    borderRadius: '6px',
-                                    fontSize: '0.85rem',
-                                    color: '#059669',
-                                    fontWeight: '500',
-                                    cursor: 'default'
-                                }}>
-                                    <CheckCircle2 size={16} /> Active
-                                </button>
-                            ) : addon.status === 'installed' ? (
-                                <button className="action-btn" style={{
-                                    padding: '0.5rem 1rem',
-                                    fontSize: '0.85rem',
-                                    background: '#111827',
-                                    color: 'white',
-                                    border: 'none',
-                                    borderRadius: '6px'
-                                }}>
-                                    Activate
-                                </button>
-                            ) : (
-                                <button className="action-btn" style={{
-                                    padding: '0.5rem 1rem',
-                                    fontSize: '0.85rem',
-                                    background: '#f3f4f6',
-                                    color: '#374151',
-                                    border: 'none',
-                                    borderRadius: '6px',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem'
-                                }}>
-                                    <Download size={16} /> Install
-                                </button>
-                            )}
-                        </div>
-                    </div>
-                ))}
-            </div>
+                        );
+                    })}
+                </div>
+            )}
         </div>
     );
 }
