@@ -386,5 +386,21 @@
       "id": "2abcf238-ec2e-4208-aa5c-09851e4ce8fb",
       "createdAt": "2026-01-26T12:33:20.131Z"
     }
+  ],
+  "webhooks": [
+    {
+      "name": "Order Confirmation",
+      "template": "shipping_update",
+      "account": "Default Account",
+      "id": "b36a10aa-c7bd-4a7e-8c2b-c8a5fd4fbc05",
+      "status": "Running",
+      "createdAt": "1/26/2026",
+      "stats": {
+        "processed": 1,
+        "delivered": 1,
+        "failed": 0
+      },
+      "lastCalled": "1/26/2026, 8:04:02 PM"
+    }
   ]
 }
