@@ -357,7 +357,7 @@
       "title": "Welcome to WhatChat",
       "message": "Thanks for joining! Set up your first bot now.",
       "time": "2m ago",
-      "read": false,
+      "read": true,
       "type": "success"
     },
     {

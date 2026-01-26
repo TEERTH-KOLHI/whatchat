@@ -172,7 +172,7 @@ export default function Navbar({ toggleSidebar }) {
                             <Link href="/dashboard/settings" className="menu-item">
                                 <User size={18} /> Account
                             </Link>
-                            <Link href="#" className="menu-item">
+                            <Link href="/pricing" target="_blank" className="menu-item">
                                 <CreditCard size={18} /> Renew / Upgrade
                             </Link>
                             <Link href="/dashboard/transactions" className="menu-item">
