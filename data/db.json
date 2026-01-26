@@ -376,5 +376,15 @@
       "read": true,
       "type": "warning"
     }
+  ],
+  "bots": [
+    {
+      "name": "Welcome",
+      "type": "AI Agent",
+      "status": "Active",
+      "lastActive": "Just now",
+      "id": "2abcf238-ec2e-4208-aa5c-09851e4ce8fb",
+      "createdAt": "2026-01-26T12:33:20.131Z"
+    }
   ]
 }
