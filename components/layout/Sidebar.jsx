@@ -91,9 +91,9 @@ export default function Sidebar({ collapsed }) {
                             >
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', overflow: 'hidden' }}>
                                     <item.icon
-                                        size={20}
+                                        size={16}
                                         className="nav-icon"
-                                        style={item.color ? { color: item.color, minWidth: '20px' } : { minWidth: '20px' }}
+                                        style={item.color ? { color: item.color, minWidth: '16px' } : { minWidth: '16px' }}
                                     />
                                     {!collapsed && <span className="nav-label">{item.label}</span>}
                                 </div>
@@ -137,7 +137,7 @@ export default function Sidebar({ collapsed }) {
                                                 className={`nav-item small ${isActive ? 'active-sub' : ''}`}
                                                 style={{
                                                     padding: '0 0.5rem',
-                                                    fontSize: '0.85rem',
+                                                    fontSize: '0.75rem',
                                                     display: 'flex',
                                                     alignItems: 'center',
                                                     marginBottom: '1px',
@@ -150,10 +150,10 @@ export default function Sidebar({ collapsed }) {
                                             >
                                                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                                                     <sub.icon
-                                                        size={16}
+                                                        size={14}
                                                         fill={sub.fillColor || "none"}
                                                         color={sub.iconColor || "#6b7280"}
-                                                        style={{ minWidth: '16px' }}
+                                                        style={{ minWidth: '14px' }}
                                                     />
                                                     <span>{sub.label}</span>
                                                 </div>

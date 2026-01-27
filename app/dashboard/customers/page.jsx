@@ -1,12 +1,9 @@
 "use client";
 import React from 'react';
-import SubscriberList from '../../../components/dashboard/shared/SubscriberList';
+import WhatsAppSubscriberManager from '../../../components/dashboard/shared/WhatsAppSubscriberManager';
 
 export default function CustomersPage() {
     return (
-        <SubscriberList
-            title="Manage Subscribers"
-            platform="whatsapp"
-        />
+        <WhatsAppSubscriberManager />
     );
 }
