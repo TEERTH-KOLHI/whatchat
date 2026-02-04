@@ -1,0 +1,893 @@
+/* Landing Page Styles */
+.landing-container {
+  font-family: 'Inter', sans-serif;
+  color: #1a1a1a;
+  background-color: #ffffff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.landing-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 4rem;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f3d36;
+}
+
+.brand-icon {
+  color: #19877b;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 500;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.lang-selector {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-login {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.btn-signup {
+  text-decoration: none;
+  background-color: #014737;
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.btn-signup:hover {
+  background-color: #013629;
+}
+
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  padding: 4rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-badge {
+  background: #e6f0ee;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+  color: #0f3d36;
+  font-weight: 500;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+}
+
+.cta-button {
+  background-color: #014737;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: inline-block;
+}
+
+.cta-button:hover {
+  background-color: #013629;
+}
+
+.trust-badges {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Connection Lines / Background Decoration */
+/* Dashboard Preview */
+.dashboard-preview {
+  margin-top: 4rem;
+  position: relative;
+  z-index: 10;
+  /* Above decorative lines/avatars if needed, but below floating avatars? */
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dashboard-preview img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Connection Lines / Background Decoration */
+.avatar-float {
+  position: absolute;
+  z-index: 1;
+  /* Ensure they appear */
+}
+
+/* Detailed positioning relative to the hero container */
+/* Top Left - Woman in circle from image 3 */
+/* Needs to be high up, left of "Revolutionise" text essentially */
+.avatar-top-left {
+  top: 0px;
+  left: -100px;
+  width: 200px;
+}
+
+/* Bottom Left - Man with curly hair from image 4 */
+/* Needs to be clearly separated, lower down, pointing to corner of dashboard */
+.avatar-bottom-left {
+  top: 250px;
+  left: 20px;
+  width: 220px;
+}
+
+/* Top Right - Man smiling from image 1 */
+/* Highest one on the right */
+.avatar-top-right {
+  top: 40px;
+  right: -100px;
+  width: 200px;
+}
+
+/* Bottom Right - Woman with red hair from image 2 */
+/* Lower, pointing to mid-right dashboard */
+.avatar-bottom-right {
+  top: 290px;
+  right: 50px;
+  width: 210px;
+}
+
+/* Ensure dashboard is "below" the line ends visually if needed, though most lines stop before */
+/* Actually, usually lines go BEHIND the dashboard */
+.dashboard-preview {
+  margin-top: 3rem;
+  position: relative;
+  z-index: 10;
+}
+
+.avatar-float {
+  z-index: 5;
+  /* Behind dashboard (10)? No, lines stop at the user circle usually */
+  /* Wait, the images contain the user AND the line. */
+  /* If the line ends at the dashboard, it should probably be behind the dashboard if it overlaps */
+  z-index: 9;
+}
+
+/* SVG Lines Removed */
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .nav-links {
+    display: none;
+    /* Simple mobile hide for now */
+  }
+
+  .landing-nav {
+    padding: 1rem;
+  }
+}
+
+/* Features Section */
+.features-section {
+  padding: 6rem 2rem;
+  background: #fdfdfd;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.features-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.features-badge {
+  background: #e6f0ee;
+  color: #0f3d36;
+  padding: 6px 16px;
+  border-radius: 20px;
+  display: inline-block;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.features-title {
+  font-size: 3rem;
+  color: #000;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.features-subtitle {
+  color: #64748b;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.features-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+/* Laptop Mockup (CSS Only) */
+.laptop-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+}
+
+.laptop-screen {
+  background: #000;
+  border-radius: 12px 12px 0 0;
+  padding: 3%;
+  /* Bezel thickness */
+  width: 100%;
+  box-shadow: 0 0 0 2px #222;
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+}
+
+.laptop-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+.laptop-base {
+  width: 120%;
+  height: 16px;
+  background: #333;
+  /* Darker base like Macbook Air M2 roughly */
+  border-radius: 0 0 10px 10px;
+  position: relative;
+  background: linear-gradient(to bottom, #555, #333);
+}
+
+.laptop-base::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15%;
+  height: 4px;
+  background: #222;
+  border-radius: 0 0 4px 4px;
+  /* Notch area opener */
+}
+
+/* Features List / Accordion */
+.features-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 500px;
+}
+
+.feature-item {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s;
+  border: 1px solid #f0f0f0;
+}
+
+.feature-item.active {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-color: #e6f0ee;
+}
+
+.feature-head {
+  display: flex;
+  align-items: center;
+  padding: 1.2rem;
+  cursor: pointer;
+  gap: 1rem;
+}
+
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: #f0fdf4;
+  color: #19877b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.feature-item h3 {
+  flex: 1;
+  margin: 0;
+  font-size: 1.1rem;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.feature-arrow {
+  color: #000;
+  font-size: 0.8rem;
+}
+
+.feature-body {
+  padding: 0 1.2rem 1.5rem 4.5rem;
+  /* Indented to align with text */
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+  .features-content {
+    flex-direction: column;
+  }
+
+  .laptop-container {
+    width: 100%;
+  }
+
+  .features-list {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Feature Cards Section */
+.feature-cards-section {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0 2rem 6rem;
+  /* Bottom padding */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: #fdfdfd;
+  /* Or slightly off-white if distinguishing from main bg */
+  /* Actually the image seems to show them as cards on white/light bg. 
+       Let's assume the overall page is white and these are faint sections or vice versa.
+       The image shows cards with substantial padding and rounded corners. */
+  background: #fcfcfc;
+  border: 1px solid #f0f0f0;
+  border-radius: 16px;
+  padding: 3rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.card-icon {
+  margin-bottom: 1.5rem;
+}
+
+.icon-box {
+  width: 60px;
+  height: 60px;
+  background: #e6f0ee;
+  /* Light green bg */
+  color: #014737;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #000;
+}
+
+.feature-card p {
+  color: #64748b;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .feature-cards-section {
+    flex-direction: column;
+  }
+}
+
+/* Modern How It Works Section */
+.how-it-works-modern {
+  padding: 8rem 2rem;
+  background: linear-gradient(to bottom, #ffffff, #f8fafc);
+  max-width: 100%;
+}
+
+.how-it-works-modern .section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 5rem;
+}
+
+.modern-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.modern-step-card {
+  background: white;
+  border-radius: 24px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modern-step-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
+  border-color: rgba(25, 135, 123, 0.1);
+}
+
+.middle-card {
+  /* Optional: Make the middle card stand out or sit higher/lower */
+}
+
+/* Big Watermark Number */
+.step-bg-number {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 8rem;
+  font-weight: 800;
+  color: #f1f5f9;
+  z-index: 0;
+  line-height: 1;
+  opacity: 0.6;
+  transition: color 0.3s ease;
+}
+
+.modern-step-card:hover .step-bg-number {
+  color: #e6fffa;
+  /* Light teal tint on hover */
+}
+
+.step-content {
+  position: relative;
+  z-index: 1;
+}
+
+.modern-icon-box {
+  width: 56px;
+  height: 56px;
+  background: #0f3d36;
+  color: white;
+  /* White icon on dark teal */
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(15, 61, 54, 0.15);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.modern-step-card:hover .modern-icon-box {
+  transform: scale(1.1);
+  background: #19877b;
+  /* Brighter teal on hover */
+}
+
+.modern-step-card h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+}
+
+.modern-step-card p {
+  color: #64748b;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .modern-steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Reviews Section */
+.reviews-section {
+  padding: 6rem 2rem 8rem;
+  background: #fff;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.reviews-section .section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+}
+
+.reviews-section .section-badge {
+  background: #e6f0ee;
+  color: #0f3d36;
+  padding: 6px 16px;
+  border-radius: 20px;
+  display: inline-block;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.reviews-section .section-title {
+  font-size: 3rem;
+  color: #000;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.reviews-section .section-subtitle {
+  color: #64748b;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.review-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+  overflow: visible;
+}
+
+.review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.review-stars {
+  color: #fbbf24;
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+}
+
+.review-text {
+  font-size: 0.95rem;
+  color: #1a1a1a;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  min-height: 60px;
+}
+
+.review-author {
+  margin-top: auto;
+}
+
+.review-author h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.review-author span {
+  font-size: 0.85rem;
+  color: #64748b;
+  display: block;
+  margin-top: 4px;
+}
+
+.quote-mark {
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  font-size: 4rem;
+  line-height: 1;
+  color: #f5f5f5;
+  font-family: Georgia, serif;
+  font-weight: bold;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* CTA Section */
+.cta-section {
+  background: #f5f5f5;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+.cta-subtitle {
+  font-size: 1.05rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  background-color: #014737;
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.cta-btn:hover {
+  background-color: #013629;
+}
+
+/* Footer */
+.footer {
+  background: #f9f9f9;
+  padding: 4rem 2rem 2rem;
+  border-top: 1px solid #e5e5e5;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-main {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f3d36;
+  margin-bottom: 1rem;
+}
+
+.footer-location {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 6px;
+  color: #1a1a1a;
+  transition: all 0.2s;
+  border: 1px solid #e5e5e5;
+}
+
+.social-icon:hover {
+  background: #014737;
+  color: white;
+  border-color: #014737;
+}
+
+.footer-column h3 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-column ul li a {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.footer-column ul li a:hover {
+  color: #014737;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e5e5;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.footer-bottom a {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.footer-bottom a:hover {
+  color: #014737;
+}
+
+@media (max-width: 968px) {
+  .footer-main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-main {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
